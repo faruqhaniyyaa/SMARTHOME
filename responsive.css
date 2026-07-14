@@ -1,0 +1,81 @@
+@media (max-width: 1024px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/*======================
+PRICING RESPONSIVE
+======================*/
+
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured {
+    transform: none;
+  }
+
+  .featured:hover {
+    transform: translateY(-12px);
+  }
+}
+/*======================
+CTA RESPONSIVE
+======================*/
+
+@media (max-width: 768px) {
+  .cta-box {
+    padding: 60px 30px;
+  }
+
+  .cta-box h2 {
+    font-size: 36px;
+
+    line-height: 48px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+
+    align-items: center;
+  }
+}
+/*======================
+FOOTER RESPONSIVE
+======================*/
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .newsletter input {
+    border-radius: 12px;
+  }
+
+  .newsletter button {
+    border-radius: 12px;
+  }
+}
+/*======================
+CONTACT RESPONSIVE
+======================*/
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
