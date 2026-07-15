@@ -16,8 +16,8 @@ const observer = new IntersectionObserver(
       const increment = target / 120;
 
       function updateCounter() {
-        if (current < target) {
-          current += increment;
+        if (current + increment < target) {
+          current += increment; // FIX: current harus di-increment tiap frame
 
           if (target % 1 !== 0) {
             counter.textContent = current.toFixed(1);
@@ -87,9 +87,9 @@ function revealSection() {
   });
 }
 
-window.addEventListener("scroll", revealSection);
-
-revealSection();
+window.addEventListener("scroll", revealSection, {
+  passive: true,
+});
 
 /*======================
     LOADER
@@ -113,11 +113,9 @@ const topBtn = document.querySelector(".top-btn");
 
 if (topBtn) {
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      topBtn.classList.add("show");
-    } else {
-      topBtn.classList.remove("show");
-    }
+    header?.classList.toggle("sticky", window.scrollY > 80);
+
+    topBtn?.classList.toggle("show", window.scrollY > 400);
   });
 }
 
@@ -146,8 +144,6 @@ window.addEventListener("scroll", () => {
 
   sections.forEach((section) => {
     const top = section.offsetTop - 150;
-
-    const height = section.clientHeight;
 
     if (scrollY >= top) {
       current = section.getAttribute("id");
@@ -191,45 +187,50 @@ if (glow) {
 }
 const particleContainer = document.getElementById("particles");
 
+let mouseX = 0;
+let mouseY = 0;
+let lastTime = 0;
+
 if (particleContainer) {
   document.addEventListener("mousemove", (e) => {
+    const now = Date.now();
+    if (now - lastTime < 40) return;
+    lastTime = now;
+
     const star = document.createElement("div");
-
     star.className = "star";
-
     star.style.left = e.clientX + "px";
     star.style.top = e.clientY + "px";
-
-    // ukuran random
     star.style.width = Math.random() * 5 + 3 + "px";
     star.style.height = star.style.width;
 
-    // warna random
     const colors = ["#ffffff", "#60a5fa", "#3b82f6", "#8ec5ff"];
-
     star.style.background = colors[Math.floor(Math.random() * colors.length)];
 
     particleContainer.appendChild(star);
-
     setTimeout(() => {
       star.remove();
     }, 800);
   });
 }
+
 const indicator = document.querySelector(".nav-indicator");
 const links = document.querySelectorAll("nav a");
 
 if (indicator) {
   links.forEach((link) => {
     link.addEventListener("mouseenter", () => {
-      indicator.style.width = link.offsetWidth + "px";
-      indicator.style.left = link.offsetLeft + "px";
+      indicator.style.width = `${link.offsetWidth}px`;
+      indicator.style.left = `${link.offsetLeft}px`;
     });
   });
 }
 gsap.registerPlugin(ScrollTrigger);
 
 const track = document.querySelector(".why-track");
+
+if (track) {
+}
 
 gsap.to(track, {
   x: () => -(track.scrollWidth - window.innerWidth),
