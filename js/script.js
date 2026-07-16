@@ -48,6 +48,7 @@ const observer = new IntersectionObserver(
 counters.forEach((counter) => {
   observer.observe(counter);
 });
+
 /*======================
     FAQ ACCORDION
     ======================*/
@@ -67,6 +68,7 @@ if (faqItems.length > 0) {
     });
   });
 }
+
 /*======================
     SCROLL REVEAL
     ======================*/
@@ -76,9 +78,7 @@ const reveals = document.querySelectorAll(".reveal");
 function revealSection() {
   reveals.forEach((element) => {
     const windowHeight = window.innerHeight;
-
     const revealTop = element.getBoundingClientRect().top;
-
     const revealPoint = 120;
 
     if (revealTop < windowHeight - revealPoint) {
@@ -87,9 +87,7 @@ function revealSection() {
   });
 }
 
-window.addEventListener("scroll", revealSection, {
-  passive: true,
-});
+window.addEventListener("scroll", revealSection, { passive: true });
 
 /*======================
     LOADER
@@ -97,7 +95,6 @@ window.addEventListener("scroll", revealSection, {
 
 window.addEventListener("load", () => {
   const loader = document.querySelector(".loader");
-
   if (loader) {
     setTimeout(() => {
       loader.classList.add("hide");
@@ -122,7 +119,6 @@ window.addEventListener("scroll", () => {
     ======================*/
 
 const sections = document.querySelectorAll("section");
-
 const navLinks = document.querySelectorAll("nav a");
 
 window.addEventListener("scroll", () => {
@@ -130,7 +126,6 @@ window.addEventListener("scroll", () => {
 
   sections.forEach((section) => {
     const top = section.offsetTop - 150;
-
     if (scrollY >= top) {
       current = section.getAttribute("id");
     }
@@ -138,7 +133,6 @@ window.addEventListener("scroll", () => {
 
   navLinks.forEach((link) => {
     link.classList.remove("active");
-
     if (link.getAttribute("href") === "#" + current) {
       link.classList.add("active");
     }
@@ -214,59 +208,65 @@ if (indicator) {
 
 /*======================
     WHY CAROUSEL
-    (tombol panah + drag mouse + drag jari/touch + scroll wheel + auto-scroll)
+    (transform-based — TIDAK pakai native browser scroll,
+    jadi tidak akan tertimpa isu overflow/scroll-snap apapun)
     ======================*/
+
 const whyTrack = document.getElementById("whyTrack");
 
 if (whyTrack) {
   const arrowRight = document.querySelector(".why-arrow.right");
   const arrowLeft = document.querySelector(".why-arrow.left");
+  const wrapper = document.querySelector(".why-wrapper");
 
-  // Tombol panah
-  arrowRight?.addEventListener("click", () => {
-    whyTrack.scrollBy({ left: 420, behavior: "smooth" });
-  });
+  let posX = 0;
+  let isPaused = false;
+  let isDown = false;
+  let startX = 0;
+  let startPos = 0;
 
-  arrowLeft?.addEventListener("click", () => {
-    whyTrack.scrollBy({ left: -420, behavior: "smooth" });
-  });
+  function getMaxScroll() {
+    return Math.max(0, whyTrack.scrollWidth - wrapper.clientWidth);
+  }
+
+  function setPos(x, animate = true) {
+    const max = getMaxScroll();
+    posX = Math.min(0, Math.max(-max, x));
+    whyTrack.style.transition = animate ? "transform 0.4s ease" : "none";
+    whyTrack.style.transform = `translateX(${posX}px)`;
+  }
+
+  arrowRight?.addEventListener("click", () => setPos(posX - 420));
+  arrowLeft?.addEventListener("click", () => setPos(posX + 420));
 
   // Drag pakai mouse
-  let isDown = false;
-  let startX;
-  let scrollLeftStart;
-  let isPaused = false;
-
   whyTrack.addEventListener("mousedown", (e) => {
     isDown = true;
+    isPaused = true;
     whyTrack.classList.add("dragging");
-    startX = e.pageX - whyTrack.offsetLeft;
-    scrollLeftStart = whyTrack.scrollLeft;
+    startX = e.pageX;
+    startPos = posX;
   });
 
   window.addEventListener("mouseup", () => {
     isDown = false;
     whyTrack.classList.remove("dragging");
+    isPaused = false;
   });
 
-  whyTrack.addEventListener("mousemove", (e) => {
+  window.addEventListener("mousemove", (e) => {
     if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - whyTrack.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    whyTrack.scrollLeft = scrollLeftStart - walk;
+    const delta = e.pageX - startX;
+    setPos(startPos + delta, false);
   });
 
   // Drag pakai jari (HP/tablet)
-  let touchStartX;
-  let touchScrollStart;
-
   whyTrack.addEventListener(
     "touchstart",
     (e) => {
       isPaused = true;
-      touchStartX = e.touches[0].pageX;
-      touchScrollStart = whyTrack.scrollLeft;
+      startX = e.touches[0].pageX;
+      startPos = posX;
     },
     { passive: true },
   );
@@ -274,9 +274,8 @@ if (whyTrack) {
   whyTrack.addEventListener(
     "touchmove",
     (e) => {
-      const x = e.touches[0].pageX;
-      const walk = (touchStartX - x) * 1.2;
-      whyTrack.scrollLeft = touchScrollStart + walk;
+      const delta = e.touches[0].pageX - startX;
+      setPos(startPos + delta, false);
     },
     { passive: true },
   );
@@ -285,34 +284,30 @@ if (whyTrack) {
     isPaused = false;
   });
 
-  // Scroll pakai mouse wheel (roda mouse jadi geser horizontal)
+  // Scroll pakai roda mouse
   whyTrack.addEventListener(
     "wheel",
     (e) => {
       if (e.deltaY === 0) return;
       e.preventDefault();
-      whyTrack.scrollLeft += e.deltaY * 1.2;
+      setPos(posX - e.deltaY * 1.2, false);
     },
     { passive: false },
   );
 
-  // Auto-scroll pelan pas gak disentuh
-  whyTrack.addEventListener("mouseenter", () => (isPaused = true));
-  whyTrack.addEventListener("mouseleave", () => {
-    isPaused = false;
-    isDown = false;
-    whyTrack.classList.remove("dragging");
+  wrapper.addEventListener("mouseenter", () => (isPaused = true));
+  wrapper.addEventListener("mouseleave", () => {
+    if (!isDown) isPaused = false;
   });
 
+  // Auto-scroll pelan pas gak disentuh
   setInterval(() => {
     if (isPaused || isDown) return;
-
-    const maxScroll = whyTrack.scrollWidth - whyTrack.clientWidth;
-
-    if (whyTrack.scrollLeft >= maxScroll - 2) {
-      whyTrack.scrollTo({ left: 0, behavior: "smooth" });
+    const max = getMaxScroll();
+    if (Math.abs(posX) >= max - 1) {
+      setPos(0);
     } else {
-      whyTrack.scrollLeft += 1;
+      setPos(posX - 1, false);
     }
   }, 30);
 }
@@ -320,6 +315,7 @@ if (whyTrack) {
 /*======================
     INFO MODAL (Learn More / Watch Demo / Footer links)
     ======================*/
+
 const modalOverlay = document.getElementById("modalOverlay");
 const modalTitle = document.getElementById("modalTitle");
 const modalDesc = document.getElementById("modalDesc");
@@ -348,6 +344,7 @@ modalClose2?.addEventListener("click", closeModal);
 /*======================
     AUTH MODAL (Get Started -> Login/Daftar)
     ======================*/
+
 const authOverlay = document.getElementById("authModalOverlay");
 const authClose = document.getElementById("authModalClose");
 const authTabs = document.querySelectorAll(".auth-tab");
