@@ -645,7 +645,6 @@ WHY CHOOSE US
 .why-track {
   display: flex;
   gap: 35px;
-  width: max-content;
   padding-left: 8vw;
   padding-right: 8vw;
 }
