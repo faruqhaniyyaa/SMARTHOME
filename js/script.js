@@ -17,7 +17,7 @@ const observer = new IntersectionObserver(
 
       function updateCounter() {
         if (current + increment < target) {
-          current += increment; // FIX: current harus di-increment tiap frame
+          current += increment;
 
           if (target % 1 !== 0) {
             counter.textContent = current.toFixed(1);
@@ -106,30 +106,16 @@ window.addEventListener("load", () => {
 });
 
 /*======================
-    BACK TO TOP
-    ======================*/
-
-const topBtn = document.querySelector(".top-btn");
-
-if (topBtn) {
-  window.addEventListener("scroll", () => {
-    header?.classList.toggle("sticky", window.scrollY > 80);
-
-    topBtn?.classList.toggle("show", window.scrollY > 400);
-  });
-}
-
-/*======================
-    STICKY NAVBAR
+    STICKY NAVBAR & BACK TO TOP
     ======================*/
 
 const header = document.querySelector("header");
+const topBtn = document.querySelector(".top-btn");
 
-if (header) {
-  window.addEventListener("scroll", () => {
-    header.classList.toggle("sticky", window.scrollY > 80);
-  });
-}
+window.addEventListener("scroll", () => {
+  header?.classList.toggle("sticky", window.scrollY > 80);
+  topBtn?.classList.toggle("show", window.scrollY > 400);
+});
 
 /*======================
     ACTIVE NAVIGATION
@@ -158,6 +144,7 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
 if (typeof Lenis !== "undefined") {
   const lenis = new Lenis({
     duration: 1.2,
@@ -173,6 +160,7 @@ if (typeof Lenis !== "undefined") {
 
   requestAnimationFrame(raf);
 }
+
 /*==============================
     CURSOR GLOW
     ==============================*/
@@ -185,10 +173,8 @@ if (glow) {
     glow.style.top = e.clientY + "px";
   });
 }
-const particleContainer = document.getElementById("particles");
 
-let mouseX = 0;
-let mouseY = 0;
+const particleContainer = document.getElementById("particles");
 let lastTime = 0;
 
 if (particleContainer) {
@@ -225,44 +211,186 @@ if (indicator) {
     });
   });
 }
-gsap.registerPlugin(ScrollTrigger);
 
-const track = document.querySelector(".why-track");
-
-if (track) {
-}
-
-gsap.to(track, {
-  x: () => -(track.scrollWidth - window.innerWidth),
-
-  ease: "none",
-
-  scrollTrigger: {
-    trigger: ".why",
-
-    start: "top top",
-
-    end: () => "+=" + track.scrollWidth,
-
-    pin: true,
-
-    scrub: 1,
-
-    invalidateOnRefresh: true,
-  },
-});
+/*======================
+    WHY CAROUSEL
+    (tombol panah + drag mouse + drag jari/touch + scroll wheel + auto-scroll)
+    ======================*/
 const whyTrack = document.getElementById("whyTrack");
 
-document.querySelector(".why-arrow.right").addEventListener("click", () => {
-  whyTrack.scrollBy({
-    left: 420,
-    behavior: "smooth",
+if (whyTrack) {
+  const arrowRight = document.querySelector(".why-arrow.right");
+  const arrowLeft = document.querySelector(".why-arrow.left");
+
+  // Tombol panah
+  arrowRight?.addEventListener("click", () => {
+    whyTrack.scrollBy({ left: 420, behavior: "smooth" });
+  });
+
+  arrowLeft?.addEventListener("click", () => {
+    whyTrack.scrollBy({ left: -420, behavior: "smooth" });
+  });
+
+  // Drag pakai mouse
+  let isDown = false;
+  let startX;
+  let scrollLeftStart;
+  let isPaused = false;
+
+  whyTrack.addEventListener("mousedown", (e) => {
+    isDown = true;
+    whyTrack.classList.add("dragging");
+    startX = e.pageX - whyTrack.offsetLeft;
+    scrollLeftStart = whyTrack.scrollLeft;
+  });
+
+  window.addEventListener("mouseup", () => {
+    isDown = false;
+    whyTrack.classList.remove("dragging");
+  });
+
+  whyTrack.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - whyTrack.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    whyTrack.scrollLeft = scrollLeftStart - walk;
+  });
+
+  // Drag pakai jari (HP/tablet)
+  let touchStartX;
+  let touchScrollStart;
+
+  whyTrack.addEventListener(
+    "touchstart",
+    (e) => {
+      isPaused = true;
+      touchStartX = e.touches[0].pageX;
+      touchScrollStart = whyTrack.scrollLeft;
+    },
+    { passive: true },
+  );
+
+  whyTrack.addEventListener(
+    "touchmove",
+    (e) => {
+      const x = e.touches[0].pageX;
+      const walk = (touchStartX - x) * 1.2;
+      whyTrack.scrollLeft = touchScrollStart + walk;
+    },
+    { passive: true },
+  );
+
+  whyTrack.addEventListener("touchend", () => {
+    isPaused = false;
+  });
+
+  // Scroll pakai mouse wheel (roda mouse jadi geser horizontal)
+  whyTrack.addEventListener(
+    "wheel",
+    (e) => {
+      if (e.deltaY === 0) return;
+      e.preventDefault();
+      whyTrack.scrollLeft += e.deltaY * 1.2;
+    },
+    { passive: false },
+  );
+
+  // Auto-scroll pelan pas gak disentuh
+  whyTrack.addEventListener("mouseenter", () => (isPaused = true));
+  whyTrack.addEventListener("mouseleave", () => {
+    isPaused = false;
+    isDown = false;
+    whyTrack.classList.remove("dragging");
+  });
+
+  setInterval(() => {
+    if (isPaused || isDown) return;
+
+    const maxScroll = whyTrack.scrollWidth - whyTrack.clientWidth;
+
+    if (whyTrack.scrollLeft >= maxScroll - 2) {
+      whyTrack.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      whyTrack.scrollLeft += 1;
+    }
+  }, 30);
+}
+
+/*======================
+    INFO MODAL (Learn More / Watch Demo / Footer links)
+    ======================*/
+const modalOverlay = document.getElementById("modalOverlay");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalClose = document.getElementById("modalClose");
+const modalClose2 = document.getElementById("modalClose2");
+
+document.querySelectorAll(".js-modal").forEach((el) => {
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    modalTitle.textContent = el.dataset.title || "";
+    modalDesc.textContent = el.dataset.desc || "";
+    modalOverlay.classList.add("show");
   });
 });
 
-document.querySelector(".why-arrow.left").addEventListener("click", () => {
-  whyTrack.scrollBy({
-    left: -420,
-    behavior: "smooth",
+function closeModal() {
+  modalOverlay.classList.remove("show");
+}
+
+modalClose?.addEventListener("click", closeModal);
+modalOverlay?.addEventListener("click", (e) => {
+  if (e.target === modalOverlay) closeModal();
+});
+modalClose2?.addEventListener("click", closeModal);
+
+/*======================
+    AUTH MODAL (Get Started -> Login/Daftar)
+    ======================*/
+const authOverlay = document.getElementById("authModalOverlay");
+const authClose = document.getElementById("authModalClose");
+const authTabs = document.querySelectorAll(".auth-tab");
+const authForms = document.querySelectorAll(".auth-form");
+
+document.querySelectorAll(".js-auth").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    authOverlay.classList.add("show");
   });
+});
+
+function closeAuthModal() {
+  authOverlay.classList.remove("show");
+}
+
+authClose?.addEventListener("click", closeAuthModal);
+authOverlay?.addEventListener("click", (e) => {
+  if (e.target === authOverlay) closeAuthModal();
+});
+
+authTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    authTabs.forEach((t) => t.classList.remove("active"));
+    authForms.forEach((f) => f.classList.remove("active"));
+
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab + "Form").classList.add("active");
+  });
+});
+
+document.getElementById("loginForm")?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert(
+    "Fitur login akan segera aktif. Website ini masih versi tampilan (belum terhubung ke server).",
+  );
+  closeAuthModal();
+});
+
+document.getElementById("registerForm")?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert(
+    "Fitur pendaftaran akan segera aktif. Website ini masih versi tampilan (belum terhubung ke server).",
+  );
+  closeAuthModal();
 });
