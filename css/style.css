@@ -2118,7 +2118,7 @@ WHY CAROUSEL (transform-based, tidak pakai native scroll)
 
 .why-track {
   cursor: grab;
-  user-select: none;
+  /* user-select: none; */
   will-change: transform;
 }
 
