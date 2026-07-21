@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartHome | Interactive Demo</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/demo.css" />
+  </head>
+  <body>
+    <div class="demo-bg"></div>
+
+    <div class="dashboard">
+      <header class="demo-header">
+        <div class="logo">
+          <h2>Smart<span>Hub</span></h2>
+          <p>Live Interactive Simulation</p>
+        </div>
+        <div class="status"><span class="pulse-dot"></span> System Online</div>
+      </header>
+
+      <div class="device-grid">
+        <div class="device-card" id="light-card">
+          <div class="device-header">
+            <i class="fa-solid fa-lightbulb device-icon"></i>
+            <h3>Smart Lighting</h3>
+          </div>
+          <p class="device-status" id="light-status">Status: OFF</p>
+          <button class="toggle-btn" id="light-btn">Turn ON</button>
+        </div>
+
+        <div class="device-card" id="door-card">
+          <div class="device-header">
+            <i class="fa-solid fa-lock device-icon" id="door-icon"></i>
+            <h3>Smart Door Lock</h3>
+          </div>
+          <p class="device-status" id="door-status">Status: LOCKED</p>
+          <button class="toggle-btn" id="door-btn">Unlock Door</button>
+        </div>
+
+        <div class="device-card" id="thermostat-card">
+          <div class="device-header">
+            <i class="fa-solid fa-temperature-half device-icon"></i>
+            <h3>Smart Thermostat</h3>
+          </div>
+          <div class="thermostat-control">
+            <button class="temp-btn" id="temp-down">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <div class="temp-display"><span id="temp-value">22</span>°C</div>
+            <button class="temp-btn" id="temp-up">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <p class="device-status">AI Climate Active</p>
+        </div>
+
+        <div class="device-card camera-card">
+          <div class="device-header">
+            <i class="fa-solid fa-video device-icon"></i>
+            <h3>Smart Camera</h3>
+          </div>
+          <div class="camera-feed">
+            <div class="rec-indicator">
+              <span class="pulse-dot red"></span> REC
+            </div>
+            <p>Live Feed - Front Porch</p>
+            <i class="fa-solid fa-walking movement-icon"></i>
+          </div>
+        </div>
+
+        <div class="device-card speaker-card" id="speaker-card">
+          <div class="device-header">
+            <i class="fa-solid fa-speaker-deck device-icon"></i>
+            <h3>Smart Speaker</h3>
+          </div>
+          <div class="equalizer" id="equalizer">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <button class="toggle-btn" id="speaker-btn">Play Music</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/demo.js"></script>
+  </body>
+</html>
