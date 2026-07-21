@@ -321,6 +321,7 @@ nav a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .section-title p {
   color: var(--gray);
   line-height: 30px;
