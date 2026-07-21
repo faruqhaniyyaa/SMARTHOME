@@ -2,37 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>SmartHome | Future Living</title>
 
-    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Font Awesome -->
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
 
-    <!-- CSS -->
-
     <link rel="stylesheet" href="css/style.css" />
-
-    <link rel="stylesheet" href="css/responsive.css" />
-
     <link rel="stylesheet" href="css/animation.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
   </head>
-
   <body>
     <div class="background">
       <div class="grid"></div>
@@ -40,179 +28,138 @@
       <div class="aurora aurora1"></div>
       <div class="aurora aurora2"></div>
     </div>
-
     <div id="particles"></div>
-
     <div class="glow"></div>
 
     <header>
       <div class="logo">
-        <img src="images/logo.png" />
-
+        <img src="images/logo.png" alt="SmartHome Logo" />
         <h2>Smart<span>Home</span></h2>
       </div>
-
       <nav class="navbar">
         <a href="#home">Home</a>
-
         <a href="#about">About</a>
-
         <a href="#solutions">Solutions</a>
-
         <a href="#products">Products</a>
-
         <a href="#technology">Technology</a>
-
         <a href="#contact">Contact</a>
-
         <div class="nav-indicator"></div>
       </nav>
-
       <div class="nav-btn">
-        <a href="#" class="btn"> Get Started </a>
+        <a href="#" class="btn js-auth"> Get Started </a>
       </div>
     </header>
-
-    <!-- HERO -->
 
     <section class="hero" id="home">
       <div class="hero-left">
         <span class="section-tag"> Future Living Technology </span>
-
         <h1>Transform Your Home Into A Smart Ecosystem</h1>
-
         <p>
           Experience seamless automation, enhanced security, energy efficiency,
           and AI-powered control for a smarter lifestyle.
         </p>
-
         <div class="hero-button">
           <a href="#products" class="btn"> Explore Products </a>
-
-          <a href="#" class="btn-outline"> Watch Demo </a>
+          <a
+            href="#"
+            class="btn-outline js-modal"
+            data-title="Watch Demo"
+            data-desc="Video demonstrasi sistem SmartHome otomatisasi berbasis AI akan segera hadir."
+          >
+            Watch Demo
+          </a>
         </div>
-
         <div class="hero-info">
           <div>
             <h3>10K+</h3>
-
             <span>Happy Clients</span>
           </div>
-
           <div>
             <h3>50+</h3>
-
             <span>Smart Devices</span>
           </div>
-
           <div>
             <h3>24/7</h3>
-
             <span>Support</span>
           </div>
         </div>
       </div>
-
       <div class="hero-right">
-        <img src="images/hero.png" />
+        <img src="images/hero.png" alt="Hero Image" />
       </div>
     </section>
-    <!-- ================= ABOUT ================= -->
 
     <section class="about reveal" id="about">
       <div class="about-image">
         <img src="images/about.png" alt="Smart Home" />
       </div>
-
       <div class="about-content">
         <span class="section-tag">ABOUT US</span>
-
         <h2>Innovating the Future of Smart Living</h2>
-
         <p>
           SmartHome is dedicated to transforming everyday living through
           intelligent home automation. We combine cutting-edge IoT technology,
           AI-powered automation, and elegant design to create homes that are
           safer, smarter, and more energy efficient.
         </p>
-
         <div class="about-list">
           <div class="about-item">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>AI-Based Automation</span>
+            <i class="fa-solid fa-circle-check"></i
+            ><span>AI-Based Automation</span>
           </div>
-
           <div class="about-item">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>Enterprise Security System</span>
+            <i class="fa-solid fa-circle-check"></i
+            ><span>Enterprise Security System</span>
           </div>
-
           <div class="about-item">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>Cloud Connected Devices</span>
+            <i class="fa-solid fa-circle-check"></i
+            ><span>Cloud Connected Devices</span>
           </div>
-
           <div class="about-item">
-            <i class="fa-solid fa-circle-check"></i>
-            <span>24/7 Customer Support</span>
+            <i class="fa-solid fa-circle-check"></i
+            ><span>24/7 Customer Support</span>
           </div>
         </div>
-
         <a href="#technology" class="btn"> Discover Technology </a>
       </div>
     </section>
-    <!-- ================= SOLUTIONS ================= -->
 
     <section class="solutions reveal" id="solutions">
       <div class="section-title">
         <span class="section-tag">OUR SOLUTIONS</span>
-
         <h2>Everything You Need For A Smart Home</h2>
-
         <p>
           Discover intelligent automation solutions designed to simplify
           everyday living while enhancing security, comfort, and efficiency.
         </p>
       </div>
-
       <div class="solution-grid">
         <div class="solution-card">
           <i class="fa-solid fa-shield-halved"></i>
-
           <h3>Smart Security</h3>
-
           <p>
             AI-powered surveillance, facial recognition, and real-time alerts
             for maximum protection.
           </p>
         </div>
-
         <div class="solution-card">
           <i class="fa-solid fa-lightbulb"></i>
-
           <h3>Smart Lighting</h3>
-
           <p>
             Adaptive lighting that automatically adjusts to your lifestyle and
             environment.
           </p>
         </div>
-
         <div class="solution-card">
           <i class="fa-solid fa-temperature-half"></i>
-
           <h3>Climate Control</h3>
-
           <p>
             Maintain the perfect indoor temperature with intelligent automation.
           </p>
         </div>
-
         <div class="solution-card">
           <i class="fa-solid fa-microchip"></i>
-
           <h3>AI Automation</h3>
-
           <p>
             Automate daily routines with advanced AI and seamless IoT
             connectivity.
@@ -220,177 +167,143 @@
         </div>
       </div>
     </section>
-    <!-- ================= PRODUCTS ================= -->
 
     <section class="products reveal" id="products">
       <div class="section-title">
         <span class="section-tag">OUR PRODUCTS</span>
-
         <h2>Designed For Every Smart Home</h2>
-
         <p>
           Premium smart devices engineered with elegant design, AI intelligence,
           and seamless connectivity.
         </p>
       </div>
-
       <div class="product-grid">
         <div class="product-card">
           <img src="images/product1.png" alt="" />
-
           <h3>Smart Speaker</h3>
-
           <p>AI Voice Assistant with immersive sound experience.</p>
-
-          <a href="#" class="product-btn">
-            Learn More
-
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a
+            href="#"
+            class="product-btn js-modal"
+            data-title="Smart Speaker"
+            data-desc="AI Voice Assistant dengan kualitas suara immersive dan kontrol terpusat."
+            >Learn More <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
-
         <div class="product-card">
           <img src="images/product2.png" alt="" />
-
           <h3>Smart Camera</h3>
-
           <p>AI Detection with crystal-clear night vision.</p>
-
-          <a href="#" class="product-btn">
-            Learn More
-
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a
+            href="#"
+            class="product-btn js-modal"
+            data-title="Smart Camera"
+            data-desc="AI Detection dengan resolusi 4K dan pemantauan malam jernih."
+            >Learn More <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
-
         <div class="product-card">
           <img src="images/product3.png" alt="" />
-
           <h3>Smart Door Lock</h3>
-
           <p>Fingerprint, PIN, NFC, and remote access.</p>
-
-          <a href="#" class="product-btn">
-            Learn More
-
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a
+            href="#"
+            class="product-btn js-modal"
+            data-title="Smart Door Lock"
+            data-desc="Keamanan maksimal dengan 4 metode penguncian digital."
+            >Learn More <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
-
         <div class="product-card">
           <img src="images/product4.png" alt="" />
-
           <h3>Smart Lighting</h3>
-
           <p>Adaptive brightness with voice control.</p>
-
-          <a href="#" class="product-btn">
-            Learn More
-
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a
+            href="#"
+            class="product-btn js-modal"
+            data-title="Smart Lighting"
+            data-desc="Lampu pintar hemat energi yang dapat diubah sesuai mood."
+            >Learn More <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
-        <!-- Product 5 -->
         <div class="product-card">
           <img src="images/product5.png" alt="Smart Hub" />
-
           <h3>Smart Hub</h3>
-
           <p>Centralized control for every connected smart device.</p>
-
-          <a href="#" class="product-btn">
-            Learn More
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a
+            href="#"
+            class="product-btn js-modal"
+            data-title="Smart Hub"
+            data-desc="Pusat kontrol untuk seluruh ekosistem rumah pintar Anda."
+            >Learn More <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
-
-        <!-- Product 6 -->
         <div class="product-card">
           <img src="images/product6.png" alt="Smart Thermostat" />
-
           <h3>Smart Thermostat</h3>
-
           <p>AI-powered temperature control for maximum comfort.</p>
-
-          <a href="#" class="product-btn">
-            Learn More
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a
+            href="#"
+            class="product-btn js-modal"
+            data-title="Smart Thermostat"
+            data-desc="Mengatur suhu udara secara otomatis berbasis cuaca & aktivitas."
+            >Learn More <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
       </div>
     </section>
 
-    <!-- TECHNOLOGY -->
-
     <section class="technology reveal" id="technology">
       <div class="technology-left">
         <span class="section-tag">OUR TECHNOLOGY</span>
-
         <h2>Intelligent Technology. Beautifully Integrated.</h2>
-
         <p>
           Every SmartHome device is powered by Artificial Intelligence, IoT
           connectivity, and cloud synchronization to create a seamless living
           experience.
         </p>
-
         <div class="tech-list">
           <div class="tech-item">
             <i class="fa-solid fa-brain"></i>
-
             <div>
               <h4>Artificial Intelligence</h4>
-
               <p>Automates daily activities intelligently.</p>
             </div>
           </div>
-
           <div class="tech-item">
             <i class="fa-solid fa-cloud"></i>
-
             <div>
               <h4>Cloud Synchronization</h4>
-
               <p>Access your home from anywhere.</p>
             </div>
           </div>
-
           <div class="tech-item">
             <i class="fa-solid fa-wifi"></i>
-
             <div>
               <h4>IoT Connectivity</h4>
-
               <p>All devices connected in one ecosystem.</p>
             </div>
           </div>
         </div>
       </div>
-
       <div class="technology-right">
         <img src="images/technology.png" alt="Technology" />
       </div>
     </section>
 
-    <!-- ================= WHY CHOOSE US ================= -->
-
     <section class="why reveal" id="why">
       <div class="why-header">
         <span class="section-tag">WHY CHOOSE US</span>
-
         <h2>Built Around Innovation & Trust</h2>
-
         <p>
           We don't just build smart devices. We create an intelligent ecosystem
           that makes your home safer, more comfortable, and more connected.
         </p>
       </div>
-
       <div class="why-wrapper">
         <button class="why-arrow left">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
-
         <div class="why-track" id="whyTrack">
           <div class="why-card">
             <i class="fa-solid fa-shield-halved"></i>
@@ -400,7 +313,6 @@
               protected around the clock.
             </p>
           </div>
-
           <div class="why-card">
             <i class="fa-solid fa-bolt"></i>
             <h3>Energy Efficient</h3>
@@ -409,7 +321,6 @@
               smart scheduling.
             </p>
           </div>
-
           <div class="why-card">
             <i class="fa-solid fa-mobile-screen-button"></i>
             <h3>Remote Access</h3>
@@ -418,7 +329,6 @@
               mobile application.
             </p>
           </div>
-
           <div class="why-card">
             <i class="fa-solid fa-cloud"></i>
             <h3>Cloud Integration</h3>
@@ -427,7 +337,6 @@
               technology.
             </p>
           </div>
-
           <div class="why-card">
             <i class="fa-solid fa-headset"></i>
             <h3>24/7 Support</h3>
@@ -436,7 +345,6 @@
               assistance.
             </p>
           </div>
-
           <div class="why-card">
             <i class="fa-solid fa-microchip"></i>
             <h3>AI Automation</h3>
@@ -446,222 +354,149 @@
             </p>
           </div>
         </div>
-
         <button class="why-arrow right">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
     </section>
 
-    <!-- ================= STATISTICS ================= -->
-
     <section class="stats reveal" id="stats">
       <div class="stats-grid">
         <div class="stat-card">
           <h2><span class="counter" data-target="25000">0</span>+</h2>
-
           <p>Active Users</p>
         </div>
-
         <div class="stat-card">
           <h2><span class="counter" data-target="350">0</span>+</h2>
-
           <p>Smart Devices Installed</p>
         </div>
-
         <div class="stat-card">
           <h2><span class="counter" data-target="99.9">0</span>%</h2>
-
           <p>System Uptime</p>
         </div>
-
         <div class="stat-card">
           <h2>24/7</h2>
-
           <p>Premium Support</p>
         </div>
       </div>
     </section>
-    <!-- ================= TESTIMONIALS ================= -->
 
     <section class="testimonial reveal" id="testimonial">
       <div class="section-title">
         <span class="section-tag">TESTIMONIALS</span>
-
         <h2>Trusted By Thousands Of Families</h2>
-
         <p>
           Hear what our customers say about their experience with SmartHome
           technology.
         </p>
       </div>
-
       <div class="testimonial-grid">
         <div class="testimonial-card">
           <div class="rating-stars">★★★★★</div>
-
           <p>
             SmartHome completely transformed our house. Everything is easier,
             safer and more efficient.
           </p>
-
           <div class="testimonial-user">
             <img src="images/user1.png" alt="" />
-
             <div>
               <h4>Siti Putri</h4>
-
               <span>Home Owner</span>
             </div>
           </div>
         </div>
-
         <div class="testimonial-card">
           <div class="rating-stars">★★★★★</div>
-
           <p>
             The AI automation is incredible. I barely touch a light switch
             anymore.
           </p>
-
           <div class="testimonial-user">
             <img src="images/user2.png" alt="" />
-
             <div>
               <h4>Peter Joko</h4>
-
               <span>Interior Designer</span>
             </div>
           </div>
         </div>
-
         <div class="testimonial-card">
           <div class="rating-stars">★★★★★</div>
-
           <p>
             Premium quality, elegant design, and outstanding customer support.
           </p>
-
           <div class="testimonial-user">
             <img src="images/user3.png" alt="" />
-
             <div>
               <h4>Mrs. Aisyah</h4>
-
               <span>Architect</span>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- ================= PRICING ================= -->
 
     <section class="pricing reveal" id="pricing">
       <div class="section-title">
         <span class="section-tag">PRICING</span>
-
         <h2>Choose Your Smart Living Plan</h2>
-
         <p>
           Flexible plans designed for every lifestyle, from apartments to
           enterprise smart buildings.
         </p>
       </div>
-
       <div class="pricing-grid">
-        <!-- BASIC -->
-
         <div class="pricing-card">
           <h3>Basic</h3>
-
           <div class="price"><span>$</span>49</div>
-
           <p class="price-desc">Perfect for small apartments.</p>
-
           <ul>
             <li><i class="fa-solid fa-check"></i> Smart Lighting</li>
-
             <li><i class="fa-solid fa-check"></i> Mobile App</li>
-
             <li><i class="fa-solid fa-check"></i> Basic Automation</li>
-
             <li><i class="fa-solid fa-check"></i> Email Support</li>
           </ul>
-
-          <a href="#" class="btn-outline"> Get Started </a>
+          <a href="#" class="btn-outline js-auth"> Get Started </a>
         </div>
-
-        <!-- PRO -->
-
         <div class="pricing-card featured">
           <div class="popular">MOST POPULAR</div>
-
           <h3>Professional</h3>
-
           <div class="price"><span>$</span>99</div>
-
           <p class="price-desc">Best choice for modern homes.</p>
-
           <ul>
             <li><i class="fa-solid fa-check"></i> AI Automation</li>
-
             <li><i class="fa-solid fa-check"></i> Smart Security</li>
-
             <li><i class="fa-solid fa-check"></i> Cloud Sync</li>
-
             <li><i class="fa-solid fa-check"></i> Voice Assistant</li>
-
             <li><i class="fa-solid fa-check"></i> 24/7 Support</li>
           </ul>
-
-          <a href="#" class="btn"> Get Started </a>
+          <a href="#" class="btn js-auth"> Get Started </a>
         </div>
-
-        <!-- ENTERPRISE -->
-
         <div class="pricing-card">
           <h3>Enterprise</h3>
-
           <div class="price"><span>$</span>199</div>
-
           <p class="price-desc">Complete smart ecosystem.</p>
-
           <ul>
             <li><i class="fa-solid fa-check"></i> Unlimited Devices</li>
-
             <li><i class="fa-solid fa-check"></i> AI Analytics</li>
-
             <li><i class="fa-solid fa-check"></i> Enterprise Security</li>
-
             <li><i class="fa-solid fa-check"></i> Dedicated Engineer</li>
           </ul>
-
-          <a href="#" class="btn-outline"> Contact Sales </a>
+          <a href="#contact" class="btn-outline"> Contact Sales </a>
         </div>
       </div>
     </section>
-    <!-- ================= FAQ ================= -->
 
     <section class="faq reveal" id="faq">
       <div class="section-title">
         <span class="section-tag">FAQ</span>
-
         <h2>Frequently Asked Questions</h2>
-
-        <p>
-          Everything you need to know before transforming your home into a smart
-          ecosystem.
-        </p>
       </div>
-
       <div class="faq-container">
         <div class="faq-item active">
           <div class="faq-question">
             <h3>How does SmartHome work?</h3>
-
             <i class="fa-solid fa-plus"></i>
           </div>
-
           <div class="faq-answer">
             <p>
               SmartHome connects all your smart devices into one intelligent
@@ -670,14 +505,11 @@
             </p>
           </div>
         </div>
-
         <div class="faq-item">
           <div class="faq-question">
             <h3>Can I control my home remotely?</h3>
-
             <i class="fa-solid fa-plus"></i>
           </div>
-
           <div class="faq-answer">
             <p>
               Yes. Using our secure cloud platform, you can control lights,
@@ -685,14 +517,11 @@
             </p>
           </div>
         </div>
-
         <div class="faq-item">
           <div class="faq-question">
             <h3>Is my personal data secure?</h3>
-
             <i class="fa-solid fa-plus"></i>
           </div>
-
           <div class="faq-answer">
             <p>
               Absolutely. We use enterprise-grade encryption, AI monitoring, and
@@ -700,14 +529,11 @@
             </p>
           </div>
         </div>
-
         <div class="faq-item">
           <div class="faq-question">
             <h3>Do you provide installation?</h3>
-
             <i class="fa-solid fa-plus"></i>
           </div>
-
           <div class="faq-answer">
             <p>
               Yes. Our certified technicians provide professional installation
@@ -717,199 +543,157 @@
         </div>
       </div>
     </section>
-    <!-- ================= CALL TO ACTION ================= -->
 
     <section class="cta reveal" id="cta">
       <div class="cta-box">
         <span class="section-tag"> GET STARTED </span>
-
         <h2>Ready To Experience The Future Of Smart Living?</h2>
-
         <p>
           Join thousands of homeowners who trust SmartHome to create safer,
           smarter, and more efficient living spaces.
         </p>
-
         <div class="cta-buttons">
-          <a href="#" class="btn"> Get Started </a>
-
+          <a href="#" class="btn js-auth"> Get Started </a>
           <a href="#contact" class="btn-outline"> Contact Us </a>
         </div>
       </div>
     </section>
 
-    <!-- ================= CONTACT ================= -->
-
     <section class="contact reveal" id="contact">
       <div class="section-title">
         <span class="section-tag">CONTACT US</span>
-
         <h2>Let's Build Your Smart Home Together</h2>
-
-        <p>
-          Have questions or need a custom smart home solution? Our experts are
-          ready to help you.
-        </p>
       </div>
-
       <div class="contact-grid">
         <div class="contact-info">
           <div class="contact-card">
             <i class="fa-solid fa-location-dot"></i>
-
             <div>
               <h3>Office</h3>
-
               <p>Medan, Indonesia</p>
             </div>
           </div>
-
           <div class="contact-card">
             <i class="fa-solid fa-phone"></i>
-
             <div>
               <h3>Phone</h3>
-
               <p>+62 895 2025 3322</p>
             </div>
           </div>
-
           <div class="contact-card">
             <i class="fa-solid fa-envelope"></i>
-
             <div>
               <h3>Email</h3>
-
               <p>contact@smarthome.com</p>
             </div>
           </div>
-
           <div class="contact-card">
             <i class="fa-solid fa-clock"></i>
-
             <div>
               <h3>Working Hours</h3>
-
               <p>Monday - Friday | 08:00 - 18:00</p>
             </div>
           </div>
         </div>
-
-        <!-- RIGHT -->
-
         <div class="contact-form">
           <form>
             <input type="text" placeholder="Your Name" required />
-
             <input type="email" placeholder="Your Email" required />
-
             <input type="text" placeholder="Subject" />
-
             <textarea placeholder="Write your message..." rows="6"></textarea>
-
             <button type="submit" class="btn">Send Message</button>
           </form>
         </div>
       </div>
-
-      <!-- MAP -->
-
       <div class="contact-map">
         <iframe
-          src="https://www.google.com/maps?q=Jakarta&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127453.64243615392!2d98.57140220677569!3d3.575618426038162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303131cc1cb3eb2d%3A0x23d431c8a5f082cb!2sMedan%2C%20Kota%20Medan%2C%20Sumatera%20Utara!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
           loading="lazy"
           allowfullscreen
-        >
-        </iframe>
+        ></iframe>
       </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
-
     <footer class="footer reveal">
       <div class="footer-grid">
-        <!-- COMPANY -->
-
         <div class="footer-column">
           <h2 class="footer-logo">Smart<span>Home</span></h2>
-
           <p>
             Building intelligent homes with AI, IoT, and cloud technology for a
             safer, smarter future.
           </p>
-
           <div class="footer-social">
             <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-
             <a href="#"><i class="fa-brands fa-instagram"></i></a>
-
             <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-
             <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
         </div>
-
-        <!-- COMPANY -->
-
         <div class="footer-column">
           <h3>Company</h3>
-
           <a href="#about">About Us</a>
-
           <a href="#solutions">Solutions</a>
-
           <a href="#products">Products</a>
-
           <a href="#technology">Technology</a>
         </div>
-
-        <!-- SUPPORT -->
-
         <div class="footer-column">
           <h3>Support</h3>
-
           <a href="#">Help Center</a>
-
           <a href="#">Privacy Policy</a>
-
           <a href="#">Terms & Conditions</a>
-
           <a href="#faq">FAQ</a>
         </div>
-
-        <!-- NEWSLETTER -->
-
         <div class="footer-column">
           <h3>Newsletter</h3>
-
           <p>Subscribe to receive our latest updates.</p>
-
           <form class="newsletter">
             <input type="email" placeholder="Your Email" />
-
             <button type="submit">Subscribe</button>
           </form>
         </div>
       </div>
-
       <div class="footer-bottom">
         © Faruq Haniyya Siddik. All Rights Reserved.
       </div>
     </footer>
 
-    <!-- ================= LOADER ================= -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-box">
+        <button class="modal-close" id="modalClose">&times;</button>
+        <h3 id="modalTitle">Title</h3>
+        <p id="modalDesc">Description goes here...</p>
+        <button class="btn" id="modalClose2">Tutup</button>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="authModalOverlay">
+      <div class="modal-box auth-box">
+        <button class="modal-close" id="authModalClose">&times;</button>
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-tab="login">Masuk</button>
+          <button class="auth-tab" data-tab="register">Daftar</button>
+        </div>
+        <form id="loginForm" class="auth-form active">
+          <input type="email" placeholder="Email Anda" required />
+          <input type="password" placeholder="Kata Sandi" required />
+          <button type="submit" class="btn">Masuk</button>
+        </form>
+        <form id="registerForm" class="auth-form">
+          <input type="text" placeholder="Nama Lengkap" required />
+          <input type="email" placeholder="Email Anda" required />
+          <input type="password" placeholder="Kata Sandi" required />
+          <button type="submit" class="btn">Daftar</button>
+        </form>
+      </div>
+    </div>
 
     <div class="loader">
       <div class="loader-logo">Smart<span>Home</span></div>
     </div>
-
-    <a href="#" class="top-btn">
-      <i class="fa-solid fa-arrow-up"></i>
-    </a>
+    <a href="#" class="top-btn"><i class="fa-solid fa-arrow-up"></i></a>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-
     <script src="js/script.js"></script>
   </body>
 </html>
