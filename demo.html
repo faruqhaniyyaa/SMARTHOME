@@ -28,7 +28,195 @@
         <div class="status"><span class="pulse-dot"></span> System Online</div>
       </header>
 
-      <div class="device-grid">
+      <div class="view-toggle">
+        <button class="view-btn active" id="viewFloorplanBtn">
+          <i class="fa-solid fa-house"></i> Floor Plan
+        </button>
+        <button class="view-btn" id="viewCardsBtn">
+          <i class="fa-solid fa-table-cells"></i> Card View
+        </button>
+      </div>
+
+      <!-- ================= FLOOR PLAN VIEW ================= -->
+      <div class="floorplan-view" id="floorplanView">
+        <div class="floorplan">
+          <!-- Rooms -->
+          <div
+            class="room"
+            style="left: 3.33%; top: 4.62%; width: 30%; height: 38.46%"
+          >
+            <span class="room-label">Master Bedroom</span>
+            <div
+              class="furniture bed"
+              style="left: 45%; top: 15%; width: 50%; height: 55%"
+            ></div>
+            <div
+              class="furniture nightstand"
+              style="left: 38%; top: 15%; width: 8%; height: 12%"
+            ></div>
+          </div>
+
+          <div
+            class="room"
+            style="left: 33.33%; top: 4.62%; width: 13.33%; height: 38.46%"
+          >
+            <span class="room-label">Bath</span>
+            <div
+              class="furniture tub"
+              style="left: 20%; top: 12%; width: 60%; height: 28%"
+            ></div>
+            <div
+              class="furniture sink round"
+              style="left: 30%; top: 60%; width: 40%; height: 22%"
+            ></div>
+          </div>
+
+          <div
+            class="room"
+            style="left: 46.67%; top: 4.62%; width: 25.56%; height: 38.46%"
+          >
+            <span class="room-label">Bedroom 2</span>
+            <div
+              class="furniture bed small"
+              style="left: 10%; top: 15%; width: 42%; height: 50%"
+            ></div>
+          </div>
+
+          <div
+            class="room"
+            style="left: 72.22%; top: 4.62%; width: 24.44%; height: 38.46%"
+          >
+            <span class="room-label">Bedroom 3</span>
+            <div
+              class="furniture bed small"
+              style="left: 48%; top: 15%; width: 42%; height: 50%"
+            ></div>
+          </div>
+
+          <div
+            class="room"
+            style="left: 3.33%; top: 43.08%; width: 27.78%; height: 49.23%"
+          >
+            <span class="room-label">Kitchen</span>
+            <div
+              class="furniture counter"
+              style="left: 8%; top: 10%; width: 84%; height: 16%"
+            ></div>
+            <div
+              class="furniture island"
+              style="left: 20%; top: 55%; width: 60%; height: 18%"
+            ></div>
+          </div>
+
+          <div
+            class="room room-living"
+            style="left: 31.11%; top: 43.08%; width: 41.11%; height: 49.23%"
+          >
+            <span class="room-label">Living &amp; Dining</span>
+            <div
+              class="furniture sofa"
+              style="left: 6%; top: 12%; width: 34%; height: 20%"
+            ></div>
+            <div
+              class="furniture table round"
+              style="left: 14%; top: 38%; width: 16%; height: 14%"
+            ></div>
+            <div
+              class="furniture table"
+              style="left: 55%; top: 15%; width: 32%; height: 16%"
+            ></div>
+
+            <div class="light-glow" id="livingGlow"></div>
+
+            <button
+              class="device-hotspot"
+              id="fpLightBtn"
+              style="left: 46%; top: 60%"
+              title="Smart Lighting"
+            >
+              <i class="fa-solid fa-lightbulb"></i>
+            </button>
+            <button
+              class="device-hotspot"
+              id="fpSpeakerBtn"
+              style="left: 66%; top: 60%"
+              title="Smart Speaker"
+            >
+              <i class="fa-solid fa-volume-high"></i>
+            </button>
+          </div>
+
+          <div
+            class="room"
+            style="left: 72.22%; top: 43.08%; width: 12.22%; height: 24.6%"
+          >
+            <span class="room-label">Bath</span>
+            <div
+              class="furniture sink round"
+              style="left: 25%; top: 25%; width: 50%; height: 35%"
+            ></div>
+          </div>
+
+          <div
+            class="room room-hallway"
+            style="left: 72.22%; top: 67.7%; width: 24.44%; height: 24.6%"
+          >
+            <span class="room-label">Hallway</span>
+            <div class="thermostat-widget" id="fpThermostat">
+              <button class="temp-mini-btn" id="fpTempDown">
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <div class="temp-mini-display">
+                <span id="fpTempValue">22</span>°
+              </div>
+              <button class="temp-mini-btn" id="fpTempUp">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Porch / entrance -->
+          <div
+            class="room room-porch"
+            style="left: 31.11%; top: 92.31%; width: 41.11%; height: 7.69%"
+          >
+            <span class="room-label porch-label">Entrance</span>
+            <button
+              class="device-hotspot door-hotspot"
+              id="fpDoorBtn"
+              style="left: 50%; top: 30%"
+              title="Smart Door Lock"
+            >
+              <i class="fa-solid fa-lock" id="fpDoorIcon"></i>
+            </button>
+          </div>
+
+          <button
+            class="device-hotspot camera-hotspot"
+            id="fpCameraBtn"
+            style="left: 67.78%; top: 88%"
+            title="Smart Camera"
+          >
+            <i class="fa-solid fa-video"></i>
+            <span class="rec-pulse"></span>
+          </button>
+
+          <div class="camera-popup" id="fpCameraPopup">
+            <div class="rec-indicator">
+              <span class="pulse-dot red"></span> REC
+            </div>
+            <p>Live Feed - Front Porch</p>
+          </div>
+        </div>
+
+        <p class="floorplan-hint">
+          Klik ikon lampu, speaker, kunci pintu, kamera, atau tombol suhu buat
+          kontrol perangkatnya.
+        </p>
+      </div>
+
+      <!-- ================= CARD VIEW ================= -->
+      <div class="device-grid cards-view" id="cardsView">
         <div class="device-card" id="light-card">
           <div class="device-header">
             <i class="fa-solid fa-lightbulb device-icon"></i>
