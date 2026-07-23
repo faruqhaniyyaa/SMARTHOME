@@ -346,3 +346,24 @@ document
       "Fitur reset password akan segera aktif. Silakan hubungi tim support untuk sementara.",
     );
   });
+/*======================
+    HAMBURGER MOBILE NAV
+    ======================*/
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const navbar = document.getElementById("navbar");
+
+hamburgerBtn?.addEventListener("click", () => {
+  navbar.classList.toggle("active");
+  const icon = hamburgerBtn.querySelector("i");
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-xmark");
+});
+
+document.querySelectorAll(".navbar a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navbar.classList.remove("active");
+    const icon = hamburgerBtn.querySelector("i");
+    icon.classList.add("fa-bars");
+    icon.classList.remove("fa-xmark");
+  });
+});
