@@ -338,3 +338,11 @@ document.getElementById("registerForm")?.addEventListener("submit", (e) => {
   );
   closeAuthModal();
 });
+document
+  .getElementById("forgotPasswordLink")
+  ?.addEventListener("click", (e) => {
+    e.preventDefault();
+    alert(
+      "Fitur reset password akan segera aktif. Silakan hubungi tim support untuk sementara.",
+    );
+  });
